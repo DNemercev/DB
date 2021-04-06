@@ -22,10 +22,15 @@ class SoftwareController extends Controller
 
     public function showSoftware()
     {
-        $softwares = $this->model->countSoftvareIdFromSlotsJoin();
-       dd($softwares);
-//        return view('softwares', [
-//            'softwares' => $softwares
-//        ]);
+
+
+        $softwares = $this->model->selectSoftwaresSlotsSubquery();
+
+        dd($softwares);
+//        var_dump($softwares);
+        echo "test" . "<br />";
+//      return view('softwares', [
+//      'softwares' => $softwares
+//          ]);
     }
 }
