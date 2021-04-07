@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post_softwares extends Model
 {
     use HasFactory;
+
+    public $table = 'posts_softwares';
+    public $timestamps = false;
 }

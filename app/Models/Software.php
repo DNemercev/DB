@@ -10,6 +10,18 @@ class Software extends Model
 {
     use HasFactory;
 
+    protected $table = 'softwares';
+
+    public function slots()
+    {
+        return $this->hasMany(Slots::class);
+    }
+
+    public function posts()
+    {
+        return $this->belongsToMany(Posts::class);
+    }
+
     public function countSoftvareIdFromSlotsJoin()
     {
         $res =  DB::table('softwares')
@@ -60,6 +72,8 @@ class Software extends Model
 
         return $res;
     }
+
+
 
     public function selectAllFromSlotsWhereIdBetween20And100() // 2) SELECT * FROM `slots` WHERE id BETWEEN 20 AND 100
     {

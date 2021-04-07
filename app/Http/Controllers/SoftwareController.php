@@ -33,4 +33,10 @@ class SoftwareController extends Controller
 //      'softwares' => $softwares
 //          ]);
     }
+    //(подзапрос) SELECT * FROM slots WHERE software_id IN(SELECT id FROM softwares WHERE title = 'NetEnt')
+
+    public function test()
+    {
+        dd(Software::all());
+    }
 }
