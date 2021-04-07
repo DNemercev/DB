@@ -25,7 +25,7 @@ class Software extends Model
                 ->leftjoin('posts', 'posts_softwares.post_id', '=', 'posts.id')
                 ->where('slots.id', '=', 7195)->select('*');
         return $res;
-    }git
+    }
 
 
 
