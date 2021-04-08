@@ -9,6 +9,13 @@ class Slots extends Model
 {
     use HasFactory;
 
+    public function software()
+    {
+        return $this->belongsTo(Software::class);
+    }
+
     public $timestamps = false;
+
+    protected $guarded = [];
 
 }

@@ -27,6 +27,8 @@ Route::get('/', function () {
     return view('testForm');
 });
 
+Route::get('test-add', 'App\Http\Controllers\TestController@testAddToSlots');
+
 Route::post('post-softwares', 'App\Http\Controllers\TestController@addDataToPostSoftWares');
 Route::post('post', 'App\Http\Controllers\TestController@addDataToPost');
 Route::post('slots', 'App\Http\Controllers\TestController@addDataToSlots');

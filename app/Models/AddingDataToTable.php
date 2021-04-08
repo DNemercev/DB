@@ -11,6 +11,7 @@ use App\Models\Slots;
 
 class AddingDataToTable extends Model
 {
+    protected $fillable = ['title'];
     use HasFactory;
     public function addDataToPosts($title, $description, $slug, $content, $image, $website)
     {
@@ -58,6 +59,30 @@ class AddingDataToTable extends Model
         $postSoftwares->save();
     }
 
+    public function testAddToSlots()
+    {
+//        $newSlot = new Slots([
+//            'title'       => 'testTitle',
+//            'slug'        => 'testSlug',
+//            'category_id' => 100,
+//            'status'      => 1,
+//            'image'       =>'test image']);
+
+
+
+        $newSlot = new Slots;
+
+        $newSlot->title = 'test title';
+        $newSlot->slug = 'test Slug';
+        $newSlot->category_id = 100;
+        $newSlot->status = 1;
+        $newSlot->image = 'test image';
+
+        $software = Software::find(1);
+
+        $software->slots()->save($newSlot);
+    }
+
     public function addDataToSoftWares($title, $description, $slug)
     {
         $softwares = new Software;
@@ -68,4 +93,5 @@ class AddingDataToTable extends Model
 
         $softwares->save();
     }
+
 }

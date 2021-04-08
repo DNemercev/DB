@@ -71,4 +71,10 @@ class TestController extends Controller
 
         return redirect('/');
     }
+
+    public function testAddToSlots()
+    {
+        $this->model->testAddToSlots();
+        echo 'sucses';
+    }
 }

@@ -10,4 +10,11 @@ class Posts extends Model
     use HasFactory;
 
     protected $table = 'posts';
+
+    protected $guarded = [];
+
+    public function softwares()
+    {
+        return $this->belongsToMany(Software::class);
+    }
 }

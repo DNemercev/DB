@@ -12,14 +12,17 @@ class Software extends Model
 
     protected $table = 'softwares';
 
+    protected $guarded = [];
+
     public function slots()
     {
-        return $this->hasMany(Slots::class);
+        return $this->hasMany(Slots::class, 'software_id','id');
     }
 
     public function posts()
     {
-        return $this->belongsToMany(Posts::class);
+        return $this->belongsToMany(Posts::class, 'posts_softwares',
+            'post_id', 'software_id');
     }
 
     public function countSoftvareIdFromSlotsJoin()
