@@ -8,63 +8,67 @@ use App\Models\AddingDataToTable;
 class TestController extends Controller
 {
     private $model;
+    private $request;
+
+
+    public function __construct(AddingDataToTable $model, Request $request)
+    {
+        $this->request = $request;
+        $this->model = $model;
+    }
 
     public function index()
     {
         return view('testForm');
     }
 
-    public function __construct(AddingDataToTable $model)
+    public function addDataToPost()
     {
-        $this->model = $model;
+
+        $title = $this->request->post_title;
+        $description = $this->request->post_description;
+        $slug = $this->request->post_slug;
+        $content = $this->request->post_content;
+        $image = $this->request->post_image;
+        $website = $this->request->post_website;
+
+        $this->model->addDataToPosts($title, $description, $slug, $content, $image, $website);
+
+        return redirect('/');
     }
 
-
-
-    public function addTestInfoToPost()
+    public function addDataToSlots()
     {
-        $this->model
-            ->addDataToPosts('test title',
-                'test Description',
-                'test slug',
-                'test context',
-                'test image',
-                'test website');
-        echo 'test1' . "<br/>";
+        $title = $this->request->slots_title;
+        $slug = $this->request->slots_slug;
+        $categoryId = $this->request->slots_category_id;
+        $status = $this->request->slots_status;
+        $image = $this->request->slots_image;
+        $software_id = $this->request->slots_software_id;
+
+        $this->model->addDataToSlots($title, $slug, $categoryId, $status, $image, $software_id);
+
+        return redirect('/');
     }
 
-    public function addTestInfoToSlots()
-    {
-        $this->model
-            ->addDataToSlots(
-                'test title',
-                'test slug',
-                10,
-                1,
-                'test image',
-                20
-            );
-        echo 'test2' . "<br />";
-    }
-
-    public function addTestInfoToPostSoftWares(Request $request)
+    public function addDataToPostSoftWares(Request $request)
     {
         $post_id = $request->post_id;
         $software_id = $request->software_id;
 
         $this->model->addDataToPostSoftWares($post_id, $software_id);
 
-        return redirect('post-softwares');
-//            ->with('status', 'Blog Post Form Data Has Been inserted');
+        return redirect('/');
     }
 
-    public function addTestInfoToSoftwares()
+    public function addDataToSoftwares()
     {
-        $this->model
-            ->addDataToSoftWares(
-                'title test',
-                'test description',
-                'test slug'
-            );
+        $title = $this->request->software_title;
+        $decsription = $this->request->software_description;
+        $slug = $this->request->software_slug;
+
+        $this->model->addDataToSoftWares($title, $decsription, $slug);
+
+        return redirect('/');
     }
 }

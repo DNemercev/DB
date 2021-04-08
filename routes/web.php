@@ -18,16 +18,17 @@ use Illuminate\Support\Facades\Route;
 //
 //});
 
-Route::get('software', 'App\Http\Controllers\SoftwareController@test');
-Route::get('addTestInfoToPost', 'App\Http\Controllers\TestController@addTestInfoToPost');
-Route::get('addTestInfoToSlots', 'App\Http\Controllers\TestController@addTestInfoToSlots');
-Route::get('addTestInfoToPostSoftWares', 'App\Http\Controllers\TestController@addTestInfoToPostSoftWares');
-Route::get('addTestInfoToSoftwares', 'App\Http\Controllers\TestController@addTestInfoToSoftwares');
-
-Route::get('post-softwares', 'App\Http\Controllers\TestController@index');
-Route::post('post-softwares', 'App\Http\Controllers\TestController@addTestInfoToPostSoftWares');
+//Route::get('addTestInfoToPost', 'App\Http\Controllers\TestController@addTestInfoToPost');
+//Route::get('addTestInfoToSlots', 'App\Http\Controllers\TestController@addTestInfoToSlots');
+//Route::get('addTestInfoToPostSoftWares', 'App\Http\Controllers\TestController@addTestInfoToPostSoftWares');
+//Route::get('addTestInfoToSoftwares', 'App\Http\Controllers\TestController@addTestInfoToSoftwares');
 
 Route::get('/', function () {
     return view('testForm');
 });
+
+Route::post('post-softwares', 'App\Http\Controllers\TestController@addDataToPostSoftWares');
+Route::post('post', 'App\Http\Controllers\TestController@addDataToPost');
+Route::post('slots', 'App\Http\Controllers\TestController@addDataToSlots');
+Route::post('softwares', 'App\Http\Controllers\TestController@addDataToSoftwares');
 
