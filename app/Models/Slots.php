@@ -18,4 +18,5 @@ class Slots extends Model
 
     protected $guarded = [];
 
+
 }

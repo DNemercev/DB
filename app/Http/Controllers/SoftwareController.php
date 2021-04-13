@@ -3,40 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Software;
+use App\Models\SoftwareForm;
 
 class SoftwareController extends Controller
 {
 
     private $model;
+    private $request;
 
-    public function __construct(Software $model) {
+    public function __construct(Request $request, SoftwareForm $model) {
+        $this->request = $request;
         $this->model = $model;
     }
 
-//    public function showSoftware()
-//    {
-//        var_dump($this->model->countSoftvareIdFromSlotsJoin());
-//
-//    }
-
-    public function showSoftware()
+    public function index()
     {
-
-
-        $softwares = $this->model->selectSoftwaresSlotsSubquery();
-
-        dd($softwares);
-//        var_dump($softwares);
-        echo "test" . "<br />";
-//      return view('softwares', [
-//      'softwares' => $softwares
-//          ]);
+        return view('formSoftware');
     }
-    //(подзапрос) SELECT * FROM slots WHERE software_id IN(SELECT id FROM softwares WHERE title = 'NetEnt')
 
-    public function test()
+    public function addToSoftware()
     {
-        dd(Software::all());
+        $title = $this->request->title;
+        $description = $this->request->description;
+        $slug = $this->request->slug;
+
+        $this->model->addSoftware($title, $description, $slug);
+        return redirect('/');
     }
+
+    public function addRelation()
+    {
+        $this->model->addPostId($this->request->post_title, $this->request->software_title);
+        return redirect('/');
+    }
+
 }

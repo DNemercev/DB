@@ -27,10 +27,16 @@ Route::get('/', function () {
     return view('testForm');
 });
 
-Route::get('test-add', 'App\Http\Controllers\TestController@testAddToSlots');
 
-Route::post('post-softwares', 'App\Http\Controllers\TestController@addDataToPostSoftWares');
-Route::post('post', 'App\Http\Controllers\TestController@addDataToPost');
-Route::post('slots', 'App\Http\Controllers\TestController@addDataToSlots');
-Route::post('softwares', 'App\Http\Controllers\TestController@addDataToSoftwares');
+Route::post('slots', 'App\Http\Controllers\SlotsController@addToSlots');
+Route::post('slots-relation', 'App\Http\Controllers\SlotsController@addRelation');
 
+Route::post('softwares', 'App\Http\Controllers\SoftwareController@addToSoftware');
+Route::post('software-relation', 'App\Http\Controllers\SoftwareController@addRelation');
+
+Route::post('posts', 'App\Http\Controllers\PostController@addToPost');
+Route::post('post-relation', 'App\Http\Controllers\PostController@addRelation');
+
+Route::get('software-form', 'App\Http\Controllers\SoftwareController@index');
+Route::get('slots-form', 'App\Http\Controllers\SlotsController@index');
+Route::get('post-form', 'App\Http\Controllers\PostController@index');

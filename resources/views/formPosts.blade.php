@@ -6,50 +6,51 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Slots    </title>
+    <title>Document</title>
 </head>
 <body>
-<h2>SLOTS</h2>
-<form name="slots" id="slots" method="post" action="{{url('slots')}}">
+<h2>POST</h2>
+<form name="post-form" id="post" method="post" action="{{url('posts')}}">
     @csrf
     <div class="form-group">
         <label>title</label>
-        <input type="text" id="slots-title" name="slots_title" class="form-control" required="">
+        <input type="text" id="post-title" name="title" class="form-control" required="">
+    </div>
+    <div class="form-group">
+        <label >description</label>
+        <input type="text" id="post-description" name="description" class="form-control" required="">
     </div>
     <div class="form-group">
         <label >slug</label>
-        <input type="text" id="slots-slug" name="slots_slug" class="form-control" required="">
+        <input type="text" id="post-slug" name="slug" class="form-control" required="">
     </div>
     <div class="form-group">
-        <label >category id</label>
-        <input type="text" id="slots-category-id" name="slots_category_id" class="form-control" required="" pattern="^[ 0-9]+$">
-    </div>
-    <div class="form-group">
-        <label >status</label>
-        <input type="text" id="slots-status" name="slots_status" class="form-control" required="" pattern="^[0-1]{1}">
+        <label >content</label>
+        <input type="text" id="post-content" name="post_content" class="form-control" required="">
     </div>
     <div class="form-group">
         <label >image</label>
-        <input type="text" id="slots-image" name="slots_image" class="form-control" required="">
+        <input type="text" id="post-image" name="image" class="form-control" required="">
     </div>
     <div class="form-group">
-        <label >software_id</label>
-        <input type="text" id="slots-software-id" name="slots_software_id" class="form-control" required="" pattern="^[ 0-9]+$">
+        <label >website</label>
+        <input type="text" id="post-website" name="website" class="form-control" required="">
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<form name="slots-relation" id="slots-relation" method="post" action="{{url('slots-relation')}}">
+<form name="slots-relation" id="slots-relation" method="post" action="{{url('software-relation')}}">
     @csrf
+    <h1>Добавить зависимость с SoftWare через title</h1>
     <h2>Softvare</h2>
     <div class="form-group">
         <label>title</label>
         <input type="text" id="software-title" name="software_title" class="form-control" required="">
     </div>
-    <h2>Slot</h2>
+    <h2>Post</h2>
     <div class="form-group">
         <label>title</label>
-        <input type="text" id="slot-title" name="slot_title" class="form-control" required="">
+        <input type="text" id="post-title" name="post_title" class="form-control" required="">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
