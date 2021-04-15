@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\SoftwareForm;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder;
 
 
 class SlotsForm extends Model
@@ -27,11 +28,11 @@ class SlotsForm extends Model
         $this->category_id = $category_id;
         $this->image = $image;
 
-        $software = SoftwareForm::find($software_id)->firstOr(function () {
+        $software = SoftwareForm::where('id', $software_id)->firstOr(function () {
             return false;
         });
         if ($software === false)
-            $software_id = 0;
+            $this->software_id = 0;
         else
             $this->software_id = $software_id;
         $this->save();
@@ -40,12 +41,10 @@ class SlotsForm extends Model
     public function addSoftwareId(string $software_title, string $slots_title) // добавить software_id
     {
         $software = SoftwareForm::where('title', $software_title)->firstOr(function () {
-            echo "Error software";
             return false;
         });
 
         $slot = $this->where('title', $slots_title)->firstOr(function () {
-            echo "test ERROR slot";
             return false;
         });
 

@@ -9,32 +9,43 @@
     <title>Slots    </title>
 </head>
 <body>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <h2>SLOTS</h2>
 <form name="slots" id="slots" method="post" action="{{url('slots')}}">
     @csrf
     <div class="form-group">
         <label>title</label>
-        <input type="text" id="slots-title" name="slots_title" class="form-control" required="">
+        <input type="text" id="slots-title" name="title" class="form-control">
     </div>
     <div class="form-group">
         <label >slug</label>
-        <input type="text" id="slots-slug" name="slots_slug" class="form-control" required="">
+        <input type="text" id="slots-slug" name="slug" class="form-control">
     </div>
     <div class="form-group">
         <label >category id</label>
-        <input type="text" id="slots-category-id" name="slots_category_id" class="form-control" required="" pattern="^[ 0-9]+$">
+        <input type="text" id="slots-category-id" name="categoryId" class="form-control">
     </div>
     <div class="form-group">
         <label >status</label>
-        <input type="text" id="slots-status" name="slots_status" class="form-control" required="" pattern="^[0-1]{1}">
+        <input type="text" id="slots-status" name="status" class="form-control">
     </div>
     <div class="form-group">
         <label >image</label>
-        <input type="text" id="slots-image" name="slots_image" class="form-control" required="">
+        <input type="text" id="slots-image" name="image" class="form-control">
     </div>
     <div class="form-group">
-        <label >software_id</label>
-        <input type="text" id="slots-software-id" name="slots_software_id" class="form-control" required="" pattern="^[ 0-9]+$">
+        <label >softwareId</label>
+        <input type="text" id="slots-software-id" name="softwareId" class="form-control">
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -44,12 +55,12 @@
     <h2>Softvare</h2>
     <div class="form-group">
         <label>title</label>
-        <input type="text" id="software-title" name="software_title" class="form-control" required="">
+        <input type="text" id="software-title" name="softwareTitle" class="form-control">
     </div>
     <h2>Slot</h2>
     <div class="form-group">
         <label>title</label>
-        <input type="text" id="slot-title" name="slot_title" class="form-control" required="">
+        <input type="text" id="slot-title" name="slotTitle" class="form-control">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

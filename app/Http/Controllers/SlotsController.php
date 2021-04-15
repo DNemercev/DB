@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SlotsAddRelarionRequest;
+use App\Http\Requests\SlotsAddRequest;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,23 +25,35 @@ class SlotsController extends Controller
         return view('formSlots');
     }
 
-    public function addToSlots()
+    public function addToSlots(SlotsAddRequest $request)
     {
-        $slots = new SlotsForm;
+//        $validate = $request->validate([
+//            'title' => 'required|max:191',
+//            'slug' => 'required|max:191',
+//            'categoryId' => 'required|integer',
+//            'status' => 'required',
+//            'image' => 'required',
+//            'softwareId' => 'required|integer'
+//        ]);
 
-        $title = $this->request->slots_title;
-        $slug = $this->request->slots_slug;
-        $categoryId = $this->request->slots_category_id;
-        $image = $this->request->slots_image;
-        $software_id = $this->request->slots_software_id;
+        $title = $request->title;
+        $slug = $request->slug;
+        $categoryId = $request->categoryId;
+        $image = $request->image;
+        $software_id = $request->softwareId;
 
-        $slots->addSlot($title, $slug, $categoryId, $image, $software_id);
+        $this->slots->addSlot($title, $slug, $categoryId, $image, $software_id);
         return redirect('/');
     }
 
-    public function addRelation()
+    public function addRelation(SlotsAddRelarionRequest $request)
     {
-        $this->slots->addSoftwareId($this->request->software_title, $this->request->slot_title);
+//        $validate = $this->request->validate([
+//           'software_title' => 'required|max:191',
+//            'slot_title'    => 'required|max:191'
+//        ]);
+
+        $this->slots->addSoftwareId($request->softwareTitle, $request->slotTitle);
         return redirect('/');
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\PostsForm;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostAddRequest;
+use App\Http\Requests\PostAddRelationRequest;
 
 
 class PostController extends Controller
@@ -22,22 +24,24 @@ class PostController extends Controller
         return view('formPosts');
     }
 
-    public function addToPost()
+    public function addToPost(PostAddRequest $request)
     {
-        $title = $this->request->title;
-        $description = $this->request->description;
-        $slug = $this->request->slug;
-        $content = $this->request->post_content;
-        $image = $this->request->image;
-        $website = $this->request->website;
+        $title = $request->title;
+        $description = $request->description;
+        $slug = $request->slug;
+        $content = $request->post_content;
+        $image = $request->image;
+        $website = $request->website;
 
         $this->model->addPost($title, $description, $slug, $content, $image, $website);
         return redirect('/');
     }
 
-    public function addRelation()
+    public function addRelation(PostAddRelationRequest $request)
     {
-        $this->model->addSoftwareId($this->request->post_title, $this->request->software_title);
+
+        $this->model->addSoftwareId($request->postTitle, $request->software_title);
         return redirect('/');
     }
+
 }
