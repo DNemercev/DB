@@ -64,5 +64,9 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<br />
+<form action="private">
+    <button type="submit" class="btn btn-primary">Main</button>
+</form>
 </body>
 </html>

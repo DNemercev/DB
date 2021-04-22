@@ -17,6 +17,10 @@
 <br />
 <a href="software-form">обновить software</a>
 <br />
+<form action="{{route('user.logout')}}" method="GET">
+    <button type="submit" class="btn btn-primary">Logout</button>
+</form>
+
 
 </body>
 </html>
